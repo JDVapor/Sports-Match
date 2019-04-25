@@ -1,5 +1,6 @@
-DROP DATABASE IF EXISTS exampledb;
-CREATE DATABASE exampledb;
+DROP DATABASE IF EXISTS sportsMatch_db;
+CREATE DATABASE sportsMatch_db;
+USE sportsMatch_db;
 
-DROP DATABASE IF EXISTS testdb;
-CREATE DATABASE testdb;
+DROP TABLE IF EXISTS users;
+DROP TABLE IF EXISTS events;
