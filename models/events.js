@@ -3,7 +3,7 @@ module.exports = function(sequelize, DataTypes) {
     category: DataTypes.STRING,
     description: DataTypes.TEXT,
     location: DataTypes.STRING,
-    time: DataTypes.DATE,
+    timeOfEvent: DataTypes.TIME,
     maxPlayers: DataTypes.INTEGER,
     currentPlayers: DataTypes.INTEGER
   });
