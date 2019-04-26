@@ -1,5 +1,5 @@
 module.exports = function(sequelize, DataTypes) {
-  var Events = sequelize.define("Events", {
+  var Event = sequelize.define("Event", {
     category: DataTypes.STRING,
     description: DataTypes.TEXT,
     location: DataTypes.STRING,
@@ -7,5 +7,5 @@ module.exports = function(sequelize, DataTypes) {
     maxPlayers: DataTypes.INTEGER,
     currentPlayers: DataTypes.INTEGER
   });
-  return Events;
+  return Event;
 };
