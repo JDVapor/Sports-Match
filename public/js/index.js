@@ -38,17 +38,20 @@ var API = {
 // refreshevents gets new events from the db and repopulates the list
 var refreshEvents = function() {
   API.getEvents().then(function(data) {
-    var $events = data.map(function(event) {
+    var $events = data.map(function({category, description, id}) {
       var $a = $("<a>")
-        .text(event.text)
-        .attr("href", "/event/" + event.id);
+        .text(category)
+        .attr("href", "/event/" + id);
+      var $description = $("<div>").text(description);
+
+
 
       var $li = $("<li>")
         .attr({
           class: "list-group-item",
-          "data-id": event.id
+          "data-id": id
         })
-        .append($a);
+        .append($a, $description);
 
       var $button = $("<button>")
         .addClass("btn btn-danger float-right delete")
@@ -59,8 +62,10 @@ var refreshEvents = function() {
       return $li;
     });
 
-    $eventList.empty();
-    $eventList.append($events);
+    // $eventList.empty();
+    // $eventList.append($events);
+
+    $eventList.html($events);
   });
 };
 
@@ -101,7 +106,7 @@ var handleDeleteBtnClick = function() {
     .parent()
     .attr("data-id");
 
-  API.deletEevent(idToDelete).then(function() {
+  API.deleteEvent(idToDelete).then(function() {
     refreshEvents();
   });
 };
