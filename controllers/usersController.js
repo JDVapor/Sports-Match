@@ -37,6 +37,7 @@ function login({body: {username, password}}, res){
 }
 
 function logout(req,res){
+  console.log('hit');
   res.clearCookie('token');
   res.redirect('/');
 }

@@ -1,11 +1,36 @@
 <nav class="nav">
-  <a id="signin" class="nav-link" href="/signup">Signup</a>
+  <a id="signin" class="nav-link" href="/signup">Create Account</a>
 </nav>
 
-<h1>Login page</h1>
+<div class="container">
+  <div class="row">
+    <div class="col-8 offset-2">
 
-<form action="/users/login" method="post">
-  <input type="text" name="username" value="">
-  <input type="text" name="password" value="">
-  <button type="submit" name="button">Submit</button>
-</form>
+      <h1>Welcome to Sports Match!</h1>
+      <h2>Here you can create and sign up to participate in local sporting events!</h2>
+
+      <form action="/users/login" method="post">
+        <h5>Username:</h5>
+        <input type="text" name="username" value="">
+        <h5>Password:</h5>
+        <input type="text" name="password" value="">
+        <button type="submit" name="button">Submit</button>
+      </form>
+
+      <div class="buttons">
+
+        <h3>Select a category to view events for it</h3>
+        <a href="/football" <button type="button" class="btn btn-outline-primary">Football</button></a>
+        <a href="/baseball" <button type="button" class="btn btn-outline-secondary">Baseball</button></a>
+        <a href="/soccer" <button type="button" class="btn btn-outline-success">Soccer</button></a>
+        <a href="/basketball" <button type="button" class="btn btn-outline-danger">Basketball</button></a>
+        <a href="/golf" <button type="button" class="btn btn-outline-warning">Golf</button></a>
+
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="/js/index.js"></script>
