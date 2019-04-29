@@ -1,5 +1,5 @@
 module.exports = function(sequelize, DataTypes) {
-  var Users = sequelize.define("Users", {
+  var User = sequelize.define("User", {
     email: {
       type: DataTypes.STRING,
       unique: true,
@@ -21,5 +21,5 @@ module.exports = function(sequelize, DataTypes) {
     bio: DataTypes.TEXT,
     rewards: DataTypes.INTEGER
   });
-  return Users;
+  return User;
 };

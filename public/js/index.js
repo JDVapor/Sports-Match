@@ -1,13 +1,18 @@
 // Get references to page elements
+//index
 var $eventType = $("#event-type");
 var $eventDescription = $("#event-description");
-
 var $eventLocation = $("#event-location");
 var $eventTime = $("#event-time");
 var $numOfPlayers = $("#players");
-
 var $submitBtn = $("#submit");
 var $eventList = $("#event-list");
+
+var $newEmail = $("newEmail");
+var $newUser = $("newUser");
+var $newPassword = $("newPassword");
+var $submitNewUser = $("submitNewUser")
+
 
 // The API object contains methods for each kind of request we'll make
 var API = {
@@ -19,6 +24,16 @@ var API = {
       type: "POST",
       url: "api/events",
       data: JSON.stringify(event)
+    });
+  },
+  saveUser: function(event) {
+    return $.ajax({
+      headers: {
+        "Content-Type": "application/json"
+      },
+      type: "POST",
+      url: "api/users",
+      data: JSON.stringify(user)
     });
   },
   getEvents: function() {
@@ -69,26 +84,49 @@ var refreshEvents = function() {
   });
 };
 
-// handleFormSubmit is called whenever we submit a new event
-// Save the new event to the db and refresh the list
-var handleFormSubmit = function(event) {
+var handleUserCreate = function(event) {
   event.preventDefault();
 
-  var event = {
+  var newUser = {
+    email: $newEmail.val().trim(),
+    username: $newUser.val().trim(),
+    password: $newPassword.val().trim()
+
+  };
+
+  if (!(newUser.email && newUser.username)) {
+    alert("Try Again");
+    return;
+  }
+
+  API.saveUser(newUser).then(function() {
+  });
+
+  $newEmail.val("");
+  $newUser.val("");
+  $newPassword.val("");
+};
+
+// handleEventCreate is called whenever we submit a new event
+// Save the new event to the db and refresh the list
+var handleEventCreate = function(event) {
+  event.preventDefault();
+
+  var newEvent = {
     category: $eventType.val().trim(),
     description: $eventDescription.val().trim(),
     location: $eventLocation.val().trim(),
     timeOfEvent: $eventTime.val().trim(),
-    maxPlayers: $numOfPlayers.val().trim(),
+    maxPlayers: $numOfPlayers.val().trim()
 
   };
 
-  if (!(event.category && event.description)) {
+  if (!(newEvent.category && newEvent.description)) {
     alert("You must enter an event type and description!");
     return;
   }
 
-  API.saveEvent(event).then(function() {
+  API.saveEvent(newEvent).then(function() {
     refreshEvents();
   });
 
@@ -112,5 +150,6 @@ var handleDeleteBtnClick = function() {
 };
 
 // Add event listeners to the submit and delete buttons
-$submitBtn.on("click", handleFormSubmit);
+$submitBtn.on("click", handleEventCreate);
+$submitNewUser.on("click", handleUserCreate);
 $eventList.on("click", ".delete", handleDeleteBtnClick);

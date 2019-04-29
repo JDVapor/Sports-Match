@@ -15,6 +15,13 @@ module.exports = function(app) {
     });
   });
 
+  app.post("/api/users", function(req, res) {
+    db.User.create(req.body).then(function(dbUsers) {
+      res.json(dbUsers);
+      res.redirect("/")
+    });
+  });
+
   // Delete an event by id
   app.delete("/api/events/:id", function(req, res) {
     db.Event.destroy({ where: { id: req.params.id } }).then(function(dbEvent) {
