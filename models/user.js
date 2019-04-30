@@ -30,5 +30,12 @@ module.exports = function(sequelize, DataTypes) {
  User.prototype.validPassword = function(password) {
    return bcrypt.compareSync(password, this.password);
  };
+ User.associate = (models) => {
+  User.belongsToMany(models.Event, {
+    through: 'UserToEvent',
+    // as: 'event',
+    foreignKey: 'userId'
+  });
+};
   return User;
 };

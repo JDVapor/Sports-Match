@@ -80,7 +80,8 @@ var handleEventCreate = function(event) {
     location: $eventLocation.val().trim(),
     eventDate: $eventDate.val().trim(),
     timeOfEvent: $eventTime.val().trim(),
-    maxPlayers: $numOfPlayers.val().trim()
+    maxPlayers: $numOfPlayers.val().trim(),
+    currentPlayers: 1
 
   };
 

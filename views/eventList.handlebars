@@ -12,9 +12,9 @@
         <ul id="event-list" class="list-group">
           {{#each events}}
             <li data-id="{{this.id}}" class="list-group-item">
-              <a href="event/{{this.id}}">{{this.description}}</a>
+              <a href="event/{{this.id}}">{{this.username}}</a>
               <div class="description">
-                {{this.location}}
+                {{this.description}}
               </div>
             </li>
           {{/each}}

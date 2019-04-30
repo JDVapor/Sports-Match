@@ -9,10 +9,13 @@
             <strong>ID</strong>: {{event.id}}
           </p>
           <p>
+            <strong>Created by</strong>: {{event.username}}
+          </p>
+          <p>
             <strong>Category</strong>: {{event.category}}
           </p>
           <p>
-            <strong>Description:</strong> {{event.description}}
+            <strong>Description</strong>: {{event.description}}
           </p>
           <p>
             <strong>Location</strong>: {{event.location}}
@@ -31,7 +34,7 @@
           </p>
 
           <p>Click to register for this event!</p>
-          <button type="button" class="btn btn-outline-secondary">Register</button>
+          <button type="button" id="register" class="btn btn-outline-secondary">Register</button>
 
           <br>
 
