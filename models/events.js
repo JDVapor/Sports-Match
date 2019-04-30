@@ -4,6 +4,7 @@ module.exports = function(sequelize, DataTypes) {
     description: DataTypes.TEXT,
     location: DataTypes.STRING,
     timeOfEvent: DataTypes.TIME,
+    eventDate: DataTypes.DATE,
     maxPlayers: DataTypes.INTEGER,
     currentPlayers: DataTypes.INTEGER
   });

@@ -22,7 +22,7 @@
           </div>
           <div class="form-group">
             <label for="newPassword">Password</label>
-            <input type="text" name="password" id="newPassword" class="form-control" aria-describedby="newPassword" placeholder="Enter a password">
+            <input type="password" name="password" id="newPassword" class="form-control" aria-describedby="newPassword" placeholder="Enter a password">
           </div>
           <button type="submit" id="submitNewUser" class="btn btn-primary float-right">Submit</button>
         </form>
@@ -33,3 +33,11 @@
 </div>
 
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<script>
+  (function(){
+    $('#submitNewUser').click(() => {
+      $(this).attr('disabled', true);
+    })
+  })()
+</script>

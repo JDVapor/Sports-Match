@@ -27,8 +27,6 @@ require("./routes/apiRoutes")(app);
 app.use("/users", require("./routes/userRoutes"));
 require("./routes/htmlRoutes")(app);
 
-
-
 var syncOptions = { force: false };
 
 // If running a test, set syncOptions.force to true

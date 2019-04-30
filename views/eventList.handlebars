@@ -7,16 +7,15 @@
   <div class="container">
 
     <div class="row">
-      <div class="col-4 offset-2">
+      <div class="col-4 offset-1">
         <h1>{{msg}}</h1>
         <ul id="event-list" class="list-group">
           {{#each events}}
             <li data-id="{{this.id}}" class="list-group-item">
-              <a href="event/{{this.id}}">{{this.category}}</a>
+              <a href="event/{{this.id}}">{{this.description}}</a>
               <div class="description">
-                {{this.description}}
+                {{this.location}}
               </div>
-              <button class="btn btn-danger float-right delete">ｘ</button>
             </li>
           {{/each}}
         </ul>

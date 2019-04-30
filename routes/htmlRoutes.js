@@ -1,19 +1,41 @@
 var db = require("../models");
-var {validToken} = require('./../utilities/tokenService');
+var {
+  validToken
+} = require('./../utilities/tokenService');
 
 module.exports = function(app) {
   // Load index page
-  app.get("/", function({signedCookies: {token}}, res) {
-    if (token){
-      validToken(token).then(({user: {username, id}}) => {
-        db.User.findOne({where: {username, id}}).then(({username}) => {
+  app.get("/", function({
+    signedCookies: {
+      token
+    }
+  }, res) {
+    if (token) {
+      validToken(token).then(({
+        user: {
+          username,
+          id
+        }
+      }) => {
+        db.User.findOne({
+          where: {
+            username,
+            id
+          }
+        }).then((user) => {
           // protected route
-          res.render('profile', {
-            user: {
-              username
-            }
-          })
+          if (user) {
+            res.render('profile', {
+              user: {
+                username
+              }
+            });
+          } else {
+            res.render('login');
+          }
         })
+
+
       })
     } else {
       res.render('login');
@@ -28,7 +50,7 @@ module.exports = function(app) {
   app.get("/football", function(req, res) {
     db.Event.findAll({
       where: {
-        category: "football"
+        category: "Football"
       }
     }).then(function(dbEvents) {
       res.render("eventList", {
@@ -42,7 +64,7 @@ module.exports = function(app) {
   app.get("/baseball", function(req, res) {
     db.Event.findAll({
       where: {
-        category: "baseball"
+        category: "Baseball"
       }
     }).then(function(dbEvents) {
       res.render("eventList", {
@@ -56,7 +78,7 @@ module.exports = function(app) {
   app.get("/soccer", function(req, res) {
     db.Event.findAll({
       where: {
-        category: "soccer"
+        category: "Soccer"
       }
     }).then(function(dbEvents) {
       res.render("eventList", {
@@ -70,7 +92,7 @@ module.exports = function(app) {
   app.get("/basketball", function(req, res) {
     db.Event.findAll({
       where: {
-        category: "basketball"
+        category: "Basketball"
       }
     }).then(function(dbEvents) {
       res.render("eventList", {
@@ -84,7 +106,7 @@ module.exports = function(app) {
   app.get("/golf", function(req, res) {
     db.Event.findAll({
       where: {
-        category: "golf"
+        category: "Golf"
       }
     }).then(function(dbEvents) {
       res.render("eventList", {

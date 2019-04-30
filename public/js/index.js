@@ -3,6 +3,7 @@
 var $eventType = $("#event-type");
 var $eventDescription = $("#event-description");
 var $eventLocation = $("#event-location");
+var $eventDate = $("#event-date");
 var $eventTime = $("#event-time");
 var $numOfPlayers = $("#players");
 var $submitBtn = $("#submit");
@@ -77,13 +78,14 @@ var handleEventCreate = function(event) {
     category: $eventType.val().trim(),
     description: $eventDescription.val().trim(),
     location: $eventLocation.val().trim(),
+    eventDate: $eventDate.val().trim(),
     timeOfEvent: $eventTime.val().trim(),
     maxPlayers: $numOfPlayers.val().trim()
 
   };
 
   if (!(newEvent.category && newEvent.description)) {
-    alert("You must enter an event type and description!");
+    alert("You must select an event type and enter description!");
     return;
   }
 
@@ -91,25 +93,15 @@ var handleEventCreate = function(event) {
     refreshEvents();
   });
 
+  alert("Event Sucessfully Created!");
+
   $eventType.val("");
   $eventDescription.val("");
   $eventLocation.val("");
+  $eventDate.val("");
   $eventTime.val("");
   $numOfPlayers.val("");
 };
 
-// handleDeleteBtnClick is called when an event's delete button is clicked
-// Remove the event from the db and refresh the list
-var handleDeleteBtnClick = function() {
-  var idToDelete = $(this)
-    .parent()
-    .attr("data-id");
-
-  API.deleteEvent(idToDelete).then(function() {
-    refreshEvents();
-  });
-};
-
-// Add event listeners to the submit and delete buttons
+// Add event listeners to the submits
 $submitBtn.on("click", handleEventCreate);
-$eventList.on("click", ".delete", handleDeleteBtnClick);
