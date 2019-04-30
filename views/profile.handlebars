@@ -15,19 +15,30 @@
 
           <h3>Select a category to view events for it</h3>
           <a href="/football" <button type="button" class="btn btn-outline-primary">Football</button></a>
-          <a href="/baseball"<button type="button" class="btn btn-outline-secondary">Baseball</button></a>
-          <a href="/soccer"<button type="button" class="btn btn-outline-success">Soccer</button></a>
-          <a href="/basketball"<button type="button" class="btn btn-outline-danger">Basketball</button></a>
-          <a href="/golf"<button type="button" class="btn btn-outline-warning">Golf</button></a>
+          <a href="/baseball" <button type="button" class="btn btn-outline-secondary">Baseball</button></a>
+          <a href="/soccer" <button type="button" class="btn btn-outline-success">Soccer</button></a>
+          <a href="/basketball" <button type="button" class="btn btn-outline-danger">Basketball</button></a>
+          <a href="/golf" <button type="button" class="btn btn-outline-warning">Golf</button></a>
 
         </div>
 
         <form class="clearfix mb-4" action="POST">
           <h4>Create a new event by filling out the form below:</h4>
-          <div class="form-group">
+          <!-- <div class="form-group">
             <label for="event-type">Event Type</label>
             <input type="text" id="event-type" class="form-control" aria-describedby="event-type" placeholder="Enter the type of Event">
+          </div> -->
+          <div class="form-group">
+            <label for="event-type">Event Type</label>
+            <select id="event-type">
+              <option value="Football">Football</option>
+              <option value="Baseball">Baseball</option>
+              <option value="Soccer">Soccer</option>
+              <option value="Basketball">Basketball</option>
+              <option value="Golf">Golf</option>
+            </select>
           </div>
+
           <div class="form-group">
             <label for="event-description">Event Description</label>
             <textarea class="form-control" id="event-description" aria-describedby="event-description" placeholder="Enter the event description"></textarea>
