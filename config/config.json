@@ -1,10 +1,11 @@
 {
   "development": {
-    "username": "Bob",
-    "password": "ArianaGrande123!",
+    "username": "root",
+    "password": "root",
     "database": "sportsMatch_db",
     "host": "localhost",
-    "dialect": "mysql"
+    "dialect": "mysql",
+    "port": 8889
   },
   "test": {
     "username": "root",
